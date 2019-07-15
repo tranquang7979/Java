@@ -1,8 +1,11 @@
 package Activity06.TrucXanhUI;
 
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,17 +21,29 @@ public class TrucXanhUI extends JFrame {
 	private char[] inputResult;
 	private int count;
 	private String[] arrResult = { "TEA", "GOOD", "HELLO", "RACE", "BOOK", "CANDY" };
-
+	private TrucXanhLib lib;
+	
+	private JLabel lblResult;		
+	private JButton btnIntro;
+	private JButton btnPlay;
+	private JButton btnHelp;
+	private JButton btnExit;
+	
+	
 	
 	public TrucXanhUI() {
 		super();
 		
+		setLayout(new GridLayout(4,4));
+    		
+		lib = new TrucXanhLib();
+		
 		// init components
-		JLabel lblResult = new JLabel("HELLO", SwingConstants.CENTER);		
-		JButton btnIntro  = new JButton("Introduction");
-		JButton btnPlay  = new JButton("Play");
-		JButton btnHelp  = new JButton("Help");
-		JButton btnExit  = new JButton("Exit");
+		lblResult = new JLabel("HELLO", SwingConstants.CENTER);		
+		btnIntro  = new JButton("Introduction");
+		btnPlay  = new JButton("Play");
+		btnHelp  = new JButton("Help");
+		btnExit  = new JButton("Exit");
 
 		//Creating the panel (still not visible in output)
         JPanel panel = new JPanel();
@@ -45,15 +60,15 @@ public class TrucXanhUI extends JFrame {
         panel.add(btnPlay);
         panel.add(btnHelp);
         panel.add(btnExit);
-
+        
         btnIntro.addActionListener(e -> System.exit(0));
-        btnPlay.addActionListener(e -> System.exit(0));
+        btnPlay.addActionListener(e -> btnPlay_Click(e));
         btnHelp.addActionListener(e -> System.exit(0));
 		btnExit.addActionListener(e -> System.exit(0));
 		
 		//Adding Components to the frame.
-		this.getContentPane().add(BorderLayout.CENTER, lblResult);
-		this.getContentPane().add(BorderLayout.SOUTH, panel);
+		//this.getContentPane().add(BorderLayout.CENTER, lblResult);
+		//this.getContentPane().add(BorderLayout.SOUTH, panel);
 	}
 
 	public static void main(String[] args) {
@@ -61,5 +76,15 @@ public class TrucXanhUI extends JFrame {
 			TrucXanhUI frame = new TrucXanhUI();
 			frame.setVisible(true);
 		});
+	}
+	
+	private void btnPlay_Click(ActionEvent e) {
+		String word = lib.Play();
+		lblResult.setText("");
+		String temp = "";
+		for(int i = 0; i < word.length(); i++) {
+			temp += "_ ";
+		}	
+		lblResult.setText(temp);
 	}
 }
