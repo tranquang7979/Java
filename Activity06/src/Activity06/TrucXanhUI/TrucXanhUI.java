@@ -2,6 +2,8 @@ package Activity06.TrucXanhUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Random;
 
 public class TrucXanhUI {
@@ -33,7 +35,7 @@ public class TrucXanhUI {
 			c.fill = GridBagConstraints.HORIZONTAL;
 		}
 
-		lblResult = new JLabel("WELCOME TO HANGINMAN!", SwingConstants.CENTER);	
+		lblResult = new JLabel("WELCOME TO HANGINMAN!", SwingConstants.CENTER);
 		lblResult.setFont(new Font("Courier New", Font.BOLD, 39));
 		if (shouldWeightX) {
 			c.weightx = 0.5;
@@ -58,7 +60,7 @@ public class TrucXanhUI {
 		c.insets = new Insets(5, 0, 0, 5); // left right padding
 		pane.add(txtInput, c);
 
-		btnConfirm  = new JButton("Confirm");
+		btnConfirm = new JButton("Confirm");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridwidth = 1;
 		c.weightx = 0.5;
@@ -67,7 +69,7 @@ public class TrucXanhUI {
 		c.insets = new Insets(5, 0, 0, 5); // left right padding
 		pane.add(btnConfirm, c);
 
-		btnIntro  = new JButton("Introduction");
+		btnIntro = new JButton("Introduction");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridwidth = 1;
 		c.weightx = 0.5;
@@ -76,7 +78,7 @@ public class TrucXanhUI {
 		c.insets = new Insets(5, 0, 0, 5); // left right padding
 		pane.add(btnIntro, c);
 
-		btnPlay  = new JButton("Play");
+		btnPlay = new JButton("Play");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridwidth = 1;
 		c.weightx = 0.5;
@@ -85,7 +87,7 @@ public class TrucXanhUI {
 		c.insets = new Insets(5, 0, 0, 5); // left right padding
 		pane.add(btnPlay, c);
 
-		btnHelp  = new JButton("Help");
+		btnHelp = new JButton("Help");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridwidth = 1;
 		c.weightx = 0.5;
@@ -94,7 +96,7 @@ public class TrucXanhUI {
 		c.insets = new Insets(5, 0, 0, 5); // left right padding
 		pane.add(btnHelp, c);
 
-		btnExit  = new JButton("Exit");
+		btnExit = new JButton("Exit");
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridwidth = 1;
 		c.weightx = 0.5;
@@ -103,7 +105,7 @@ public class TrucXanhUI {
 		c.insets = new Insets(5, 0, 0, 5); // left right padding
 		pane.add(btnExit, c);
 
-		lblContent = new JLabel("", SwingConstants.RIGHT);	
+		lblContent = new JLabel("", SwingConstants.RIGHT);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridwidth = 1;
 		c.weightx = 0.5;
@@ -112,74 +114,91 @@ public class TrucXanhUI {
 		c.insets = new Insets(5, 0, 0, 5); // left right padding
 		pane.add(lblContent, c);
 
-        btnIntro.addActionListener(e -> System.exit(0));
-        btnPlay.addActionListener(e -> tx.Play());
-        btnHelp.addActionListener(e -> System.exit(0));
+		btnIntro.addActionListener(e -> System.exit(0));
+		btnPlay.addActionListener(e -> tx.Play());
+		btnHelp.addActionListener(e -> System.exit(0));
 		btnExit.addActionListener(e -> System.exit(0));
 		btnConfirm.addActionListener(e -> tx.Confirm());
 
-		//c.ipady = 40; // make this component tall
-		//c.fill = GridBagConstraints.HORIZONTAL;
-		//c.ipady = 0; // reset to default
-		//c.weighty = 1.0; // request any extra vertical space
-		//c.anchor = GridBagConstraints.PAGE_END; // bottom of space
-		//c.insets = new Insets(10, 0, 0, 0); // top padding
-		//c.gridx = 1; // aligned with button 2
-		//c.gridwidth = 2; // 2 columns wide
-		//c.gridy = 2; // third row
+		KeyListener keyListener = new KeyListener() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent arg0) {				
+				if(txtInput.getText().length() > 1)
+					txtInput.setText(txtInput.getText().substring(0,  1));
+			}
+
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		};
+		txtInput.addKeyListener(keyListener);
+
+		// c.ipady = 40; // make this component tall
+		// c.fill = GridBagConstraints.HORIZONTAL;
+		// c.ipady = 0; // reset to default
+		// c.weighty = 1.0; // request any extra vertical space
+		// c.anchor = GridBagConstraints.PAGE_END; // bottom of space
+		// c.insets = new Insets(10, 0, 0, 0); // top padding
+		// c.gridx = 1; // aligned with button 2
+		// c.gridwidth = 2; // 2 columns wide
+		// c.gridy = 2; // third row
 	}
-	
-	private static void messageBox(String infoMessage, String titleBar)
-    {
-        JOptionPane.showMessageDialog(null, infoMessage, titleBar, JOptionPane.INFORMATION_MESSAGE);
-    }
-	
+
+	private static void messageBox(String infoMessage, String titleBar) {
+		JOptionPane.showMessageDialog(null, infoMessage, titleBar, JOptionPane.INFORMATION_MESSAGE);
+	}
+
 	private void Play() {
 		countResult = 0;
-		
+
 		// random a word in arrResult
 		Random r = new Random();
 		int randomNumber = r.nextInt(arrResult.length);
 		result = arrResult[randomNumber];
 		String text = "";
-		for(int i = 0; i < result.length(); i++) {
+		for (int i = 0; i < result.length(); i++) {
 			text += "_ ";
 		}
 		lblResult.setText(text);
 	}
 
-	private void Confirm() 
-	{
-		Character input = txtInput.getText().charAt(0);		
+	private void Confirm() {
+		Character input = txtInput.getText().charAt(0);
 		StringBuilder output = new StringBuilder(lblResult.getText());
-				
-		for(int i = 0; i < output.length(); i++) 
-		{
-			if(input == output.charAt(i)) 
-			{
+
+		for (int i = 0; i < output.length(); i++) {
+			if (input == output.charAt(i)) {
 				messageBox(input + " was found already. Please choose another character.", "Warning Message");
 				return;
 			}
 		}
-		
+
 		int count = 0;
-		for(int j = 0; j < result.length(); j++) 
-		{
-			if(input == result.charAt(j))
-			{
-				output.setCharAt(j*2, input);
+		for (int j = 0; j < result.length(); j++) {
+			if (input == result.charAt(j)) {
+				output.setCharAt(j * 2, input);
 				count++;
 				countResult++;
 			}
 		}
-		if(count > 0)
+		if (count > 0)
 			messageBox("There " + (count > 1 ? "are " : "is ") + input + ".", "Congratulation!");
 		else
 			messageBox("There is no any " + input + ".", "Sorry!");
 		lblResult.setText(output.toString());
-		
-		if(countResult == result.length())
+
+		if (countResult == result.length())
 			messageBox("YOU WON!!!", "Congratulation!");
+
+		txtInput.setText("");
 	}
 
 	/**
