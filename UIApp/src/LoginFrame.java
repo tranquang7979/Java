@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.Color;
@@ -67,12 +68,18 @@ public class LoginFrame extends JFrame {
 		lblLoginForm.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		contentPane.add(lblLoginForm);
 		
-		JButton btnLogin = new JButton("Cancel");
-		btnLogin.setBounds(244, 136, 91, 23);
-		contentPane.add(btnLogin);
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.setBounds(244, 136, 91, 23);
+		contentPane.add(btnCancel);
 		
 		JButton btnSignin = new JButton("Signin");
 		btnSignin.setBounds(135, 136, 91, 23);
+		btnSignin.addActionListener(e -> {
+			String info[]=new String[1];
+			info[0] = textField.getText();
+			Dashboard.main(info);
+			this.setVisible(false);
+		});
 		contentPane.add(btnSignin);
 		
 		passwordField = new JPasswordField();
