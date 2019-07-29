@@ -13,6 +13,7 @@ public class JTabDemo extends JFrame {
 	JTabbedPane tabPane;
 	JMenuBar menuBar;
 
+	//test	
 	public JTabDemo() {
 
 		menuBar = new JMenuBar();
