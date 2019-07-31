@@ -1,7 +1,5 @@
 package Activity11;
 
-import java.awt.FlowLayout;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
