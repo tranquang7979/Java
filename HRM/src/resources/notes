@@ -1,0 +1,52 @@
+Xây dựng chương trình quản lý nhân sự
+
+"Quản lí thông tin nhân viên:
+Sơ yếu lí lịch của từng người được cập nhật đầy đủ.
+Quản lí quá trình công tác, hợp đồng lao động, khen thưởng kỷ luật, thông tin các khoản phụ cấp và chế độ chính sách, diễn biến lương.
+https://vndoc.com/mau-ban-khai-qua-trinh-cong-tac/download
+
+Theo dõi tình hình, quá trình làm việc từng ngày của nhân viên
+Bảo hiểm: Quản lý bảo hiểm của nhân viên.
+Tạm ứng: Tạm ứng cá nhân, mức trừ lương hàng tháng… https://www.ketoan.biz/2017/11/Nguyen-tac-quy-trinh-tam-ung.html
+Quản lý thông tin về thuế thu nhập cá nhân"
+
+------------------------------------------------------------------------------
+
+- Quản lí thông tin nhân viên
+	+ Sơ yếu lí lịch: avatar
+	- Tổng số bằng khen
+	- Số lần kỷ luật
+	- Số lần đi công tác
+	- Ngày đi làm
+	- Chức vụ	
+	-> Diễn biến lương (form, chart theo tháng và năm)
+	-> Xem HDLD mới nhất
+	-> Xem quá trình công tác
+	-> Xem khen thưởng, kỷ luật
+		
+- Quản lí quá trình công tác (https://vndoc.com/mau-ban-khai-qua-trinh-cong-tac/download)
+	+ Thời gian (Từ tháng, năm đến tháng, năm)
+	+ Chức vụ, đơn vị công tác
+	+ Nội dung công việc đã tham gia
+	
+- Hợp đồng lao động (HDLD)
+	+ File hợp đồng
+	+ Thông tin hợp đồng
+
+- Quản lý thông tin về thuế thu nhập cá nhân, BHXH
+
+- Khen thưởng kỷ luật
+	+ File
+	+ Thông tin khen thưởng hoặc kỷ luật
+	
+- Theo dõi tình hình, quá trình làm việc từng ngày của nhân viên (Chấm công)
+	+ Check in, check out time
+	+ Nội dung công việc 
+	
+- Quản lý bảo hiểm của nhân viên ?
+
+- Cài đặt:
+	+ loại phụ cấp
+	+ chế độ và chính sách
+	+ Check in, check out time
+	+ tạm ứng (https://www.ketoan.biz/2017/11/Nguyen-tac-quy-trinh-tam-ung.html)
