@@ -10,15 +10,14 @@ Bảo hiểm: Quản lý bảo hiểm của nhân viên.
 Tạm ứng: Tạm ứng cá nhân, mức trừ lương hàng tháng… https://www.ketoan.biz/2017/11/Nguyen-tac-quy-trinh-tam-ung.html
 Quản lý thông tin về thuế thu nhập cá nhân"
 
+http://www.weboffice.vn/Tinhnang/Quanlynhansu.aspx
 ------------------------------------------------------------------------------
 
 - Quản lí thông tin nhân viên
-	+ Sơ yếu lí lịch: avatar
+	+ Sơ yếu lí lịch: Id, avatar, Firstname, Lastname, Sex, Birthday, IDNo, IDDate, IDPlace, Married (boolean), Address, Email, OccupationId, DepartmentId, StartDate, SocialInsurranceNo, SocialInsurranceDate, Resign (boolean), Active, Del, ResignDate, CreateDate, ActiveDate, DelDate. 
 	- Tổng số bằng khen
 	- Số lần kỷ luật
-	- Số lần đi công tác
-	- Ngày đi làm
-	- Chức vụ	
+	- Số lần đi công tác	
 	-> Diễn biến lương (form, chart theo tháng và năm)
 	-> Xem HDLD mới nhất
 	-> Xem quá trình công tác
@@ -31,22 +30,23 @@ Quản lý thông tin về thuế thu nhập cá nhân"
 	
 - Hợp đồng lao động (HDLD)
 	+ File hợp đồng
-	+ Thông tin hợp đồng
+	+ Thông tin hợp đồng: Id, Name, Year, Forever(boolean), Active, Del, CreateDate, ActiveDate, DelDate. 
 
 - Quản lý thông tin về thuế thu nhập cá nhân, BHXH
 
 - Khen thưởng kỷ luật
 	+ File
-	+ Thông tin khen thưởng hoặc kỷ luật
+	+ Thông tin khen thưởng hoặc kỷ luật: Id, Title, Description, Active, Del, CreateDate, ActiveDate, DelDate.
+	+ Benefit: Id, Title, Description, Active, Del, CreateDate, ActiveDate, DelDate.
 	
 - Theo dõi tình hình, quá trình làm việc từng ngày của nhân viên (Chấm công)
 	+ Check in, check out time
-	+ Nội dung công việc 
+	+ Nội dung công việc (Description)
 	
 - Quản lý bảo hiểm của nhân viên ?
 
 - Cài đặt:
-	+ loại phụ cấp
-	+ chế độ và chính sách
+	+ Allowance: Id, Name, Description, ForContract, Active, Del, CreateDate, ActiveDate, DelDate.
+	+ Benefit and Policy: Id, Title, Description, ForContract, Active, Del, CreateDate, ActiveDate, DelDate.
 	+ Check in, check out time
 	+ tạm ứng (https://www.ketoan.biz/2017/11/Nguyen-tac-quy-trinh-tam-ung.html)
