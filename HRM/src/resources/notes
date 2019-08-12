@@ -43,7 +43,7 @@ http://www.weboffice.vn/Tinhnang/Quanlynhansu.aspx
 	+ Check in, check out time
 	+ Nội dung công việc (Description)
 	
-- Quản lý bảo hiểm của nhân viên ?
+- Quản lý thông tin bảo hiểm của nhân viên ?
 
 - Cài đặt:
 	+ Allowance: Id, Name, Description, ForContract, Active, Del, CreateDate, ActiveDate, DelDate.
