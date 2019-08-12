@@ -106,6 +106,10 @@ public class NIITCourse extends JFrame {
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(84, 213, 91, 23);
 		contentPane.add(btnSave);
+		
+		JButton btnRead = new JButton("Read");
+		btnRead.setBounds(193, 213, 91, 23);
+		contentPane.add(btnRead);
 
 		btnSave.addActionListener(new ActionListener() {
 
@@ -140,5 +144,4 @@ public class NIITCourse extends JFrame {
 
 		System.out.print(content);
 	}
-		
 }

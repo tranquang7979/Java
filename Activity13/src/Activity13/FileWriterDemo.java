@@ -14,7 +14,12 @@ public class FileWriterDemo {
 			 FileReader fr = new FileReader(filePath);
 			 BufferedReader br = new BufferedReader(fr);
 			 
-			 String content = br.readLine();
+			 String content = "";
+			 String temp = "";
+			 
+			 while((temp = br.readLine()) != null) {
+				 content += " " + temp;
+			 }
 			 
 			 br.close();
 			 fr.close();
