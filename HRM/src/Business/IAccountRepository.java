@@ -1,6 +1,6 @@
 package Business;
 import Models.Acc;
 
-public interface IAccountRepository implements IRepository<Acc, String> {
+//public interface IAccountRepository extends IRepository<Acc, String> {
 
-}
+//}

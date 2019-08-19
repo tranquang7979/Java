@@ -2,18 +2,11 @@ package Models;
 
 import java.util.Date;
 
-public class WorkingHistory {
-	public int WorkingHistoryId = 0;
-	public int getWorkingHistoryId() {
-		return WorkingHistoryId;
-	}
-	public void setWorkingHistoryId(int workingHistoryId) {
-		WorkingHistoryId = workingHistoryId;
-	}
-	public int getEmployeeId() {
+public class WorkingHistory extends BaseModel {
+	public String getEmployeeId() {
 		return EmployeeId;
 	}
-	public void setEmployeeId(int employeeId) {
+	public void setEmployeeId(String employeeId) {
 		EmployeeId = employeeId;
 	}
 	public Date getFromDate() {
@@ -28,16 +21,16 @@ public class WorkingHistory {
 	public void setToDate(Date toDate) {
 		ToDate = toDate;
 	}
-	public int getOccupationId() {
+	public String getOccupationId() {
 		return OccupationId;
 	}
-	public void setOccupationId(int occupationId) {
+	public void setOccupationId(String occupationId) {
 		OccupationId = occupationId;
 	}
-	public int getDepartmentId() {
+	public String getDepartmentId() {
 		return DepartmentId;
 	}
-	public void setDepartmentId(int departmentId) {
+	public void setDepartmentId(String departmentId) {
 		DepartmentId = departmentId;
 	}
 	public String getDescription() {
@@ -46,24 +39,10 @@ public class WorkingHistory {
 	public void setDescription(String description) {
 		Description = description;
 	}
-	public int EmployeeId = 0;
+	public String EmployeeId = "";
 	public Date FromDate = new Date();
 	public Date ToDate = new Date();
-	public int OccupationId = 0;
-	public int DepartmentId = 0;
+	public String OccupationId = "";
+	public String DepartmentId = "";
 	public String Description = "";
-	public Boolean Del = false;
-	public Boolean getDel() {
-		return Del;
-	}
-	public void setDel(Boolean del) {
-		Del = del;
-	}
-	public Date getDelDate() {
-		return DelDate;
-	}
-	public void setDelDate(Date delDate) {
-		DelDate = delDate;
-	}
-	public Date DelDate = new Date();
 }

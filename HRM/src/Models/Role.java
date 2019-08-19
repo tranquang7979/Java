@@ -2,13 +2,19 @@ package Models;
 
 import java.util.Date;
 
-public class Role {
-	public int RoleId = 0;
+public class Role extends BaseModel {
 	public String Title = "";
-	public int CreatorAccId = 0;
-	public Boolean Active = false;
-	public Boolean Del = false;
-	public Date CreateDate = new Date();
-	public Date ActiveDate = new Date();
-	public Date DelDate = new Date();
+	public String getTitle() {
+		return Title;
+	}
+	public void setTitle(String title) {
+		Title = title;
+	}
+	public String getCreatorAccId() {
+		return CreatorAccId;
+	}
+	public void setCreatorAccId(String creatorAccId) {
+		CreatorAccId = creatorAccId;
+	}
+	public String CreatorAccId = "";
 }

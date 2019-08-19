@@ -6,10 +6,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
-
 public class FileHelper {
 
-	public ArrayList<String> read(String fileName) {		
+	public ArrayList<String> read(String fileName) {
 		try {
 			ArrayList<String> result = new ArrayList<String>();
 			FileReader fr = new FileReader(fileName);
@@ -22,30 +21,29 @@ public class FileHelper {
 				result.add(line);
 			}
 
-			//System.out.print(content);
+			// System.out.print(content);
 
 			br.close();
 			fr.close();
+			
+			return result;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 		return null;
 	}
-	
-	public void write(String fileName, String content) {
-		try
-		{			
-			FileWriter fs = new FileWriter(fileName, true);			
+
+	public void write(String fileName, String content, boolean append) {
+		try {
+			FileWriter fs = new FileWriter(fileName, append);
 			BufferedWriter bw = new BufferedWriter(fs);
-			
+
 			bw.write(content);
 			bw.newLine();
-			
+
 			bw.close();
 			fs.close();
-		}
-		catch(Exception ex) 
-		{
+		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 	}

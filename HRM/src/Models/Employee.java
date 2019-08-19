@@ -4,14 +4,7 @@ import java.util.Date;
 
 import Constant.Sex;
 
-public class Employee {
-	public int EmployeeId = 0;
-	public int getEmployeeId() {
-		return EmployeeId;
-	}
-	public void setEmployeeId(int employeeId) {
-		EmployeeId = employeeId;
-	}
+public class Employee extends BaseModel {
 	public String getAvatar() {
 		return Avatar;
 	}
@@ -72,16 +65,16 @@ public class Employee {
 	public void setEmail(String email) {
 		Email = email;
 	}
-	public int getOccupationId() {
+	public String getOccupationId() {
 		return OccupationId;
 	}
-	public void setOccupationId(int occupationId) {
+	public void setOccupationId(String occupationId) {
 		OccupationId = occupationId;
 	}
-	public int getDepartmentId() {
+	public String getDepartmentId() {
 		return DepartmentId;
 	}
-	public void setDepartmentId(int departmentId) {
+	public void setDepartmentId(String departmentId) {
 		DepartmentId = departmentId;
 	}
 	public Date getStartDate() {
@@ -108,41 +101,11 @@ public class Employee {
 	public void setResign(Boolean resign) {
 		Resign = resign;
 	}
-	public Boolean getActive() {
-		return Active;
-	}
-	public void setActive(Boolean active) {
-		Active = active;
-	}
-	public Boolean getDel() {
-		return Del;
-	}
-	public void setDel(Boolean del) {
-		Del = del;
-	}
 	public Date getResignDate() {
 		return ResignDate;
 	}
 	public void setResignDate(Date resignDate) {
 		ResignDate = resignDate;
-	}
-	public Date getCreateDate() {
-		return CreateDate;
-	}
-	public void setCreateDate(Date createDate) {
-		CreateDate = createDate;
-	}
-	public Date getActiveDate() {
-		return ActiveDate;
-	}
-	public void setActiveDate(Date activeDate) {
-		ActiveDate = activeDate;
-	}
-	public Date getDelDate() {
-		return DelDate;
-	}
-	public void setDelDate(Date delDate) {
-		DelDate = delDate;
 	}
 	public int AccId = 0;
 	public int getAccId() {
@@ -168,16 +131,11 @@ public class Employee {
 	public Boolean Married = false;
 	public String Address = "";
 	public String Email = "";
-	public int OccupationId = 0;
-	public int DepartmentId = 0;
+	public String OccupationId = "";
+	public String DepartmentId = "";
 	public Date StartDate = new Date();
 	public String SocialInsurranceNo = "";
 	public Date SocialInsurranceDate = new Date();
 	public Boolean Resign = false;
-	public Boolean Active = false;
-	public Boolean Del = false;
 	public Date ResignDate = new Date();
-	public Date CreateDate = new Date();
-	public Date ActiveDate = new Date();
-	public Date DelDate = new Date();
 	}

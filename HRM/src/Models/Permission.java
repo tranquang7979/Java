@@ -2,18 +2,11 @@ package Models;
 
 import Constant.PermissionType;
 
-public class Permission {
-	public int PermissionId = 0;
-	public int getPermissionId() {
-		return PermissionId;
-	}
-	public void setPermissionId(int permissionId) {
-		PermissionId = permissionId;
-	}
-	public int getRoleId() {
+public class Permission  extends BaseModel {
+	public String getRoleId() {
 		return RoleId;
 	}
-	public void setRoleId(int roleId) {
+	public void setRoleId(String roleId) {
 		RoleId = roleId;
 	}
 	public String getTitle() {
@@ -58,7 +51,7 @@ public class Permission {
 	public void setPrint(PermissionType print) {
 		Print = print;
 	}
-	public int RoleId = 0;
+	public String RoleId = "";
 	public String Title = "";
 	public PermissionType Create = PermissionType.None;
 	public PermissionType Read = PermissionType.None;
