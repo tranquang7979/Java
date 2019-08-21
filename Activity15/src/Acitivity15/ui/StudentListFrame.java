@@ -5,14 +5,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
+import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import Acitivity15.Student;
 
@@ -25,7 +28,7 @@ public class StudentListFrame extends JFrame {
 	private JTextField txtAddress;
 	private JLabel lblId;
 	private JTextField txtId;
-	DefaultTableModel model;
+	TableModelCustom model;
 	Vector<String> columnNames = new Vector<String>();
 	Vector<Student> rows = new Vector<Student>();	
 	
@@ -54,7 +57,8 @@ public class StudentListFrame extends JFrame {
 		columnNames.add("Id");
 		columnNames.add("Name");
 		columnNames.add("Address");
-		model = new DefaultTableModel(rows, columnNames);		
+		//model = new DefaultTableModel(rows, columnNames);
+		model = new TableModelCustom(rows);		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -62,11 +66,7 @@ public class StudentListFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		table = new JTable(model);
-		table.setBounds(28, 109, 385, 125);
-		contentPane.add(table);
-		
+				
 		JLabel lblName = new JLabel("Name");
 		lblName.setBounds(28, 52, 46, 14);
 		contentPane.add(lblName);
@@ -98,6 +98,25 @@ public class StudentListFrame extends JFrame {
 		btnSave.setBounds(181, 76, 91, 23);
 		contentPane.add(btnSave);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 109, 422, 154);
+		contentPane.add(scrollPane);
+		
+		table = new JTable(model);
+		scrollPane.setViewportView(table);
+		
+
+		TableColumn column = table.getColumnModel().getColumn(2);
+		JComboBox comboBox = new JComboBox();
+		comboBox.addItem("Snowboarding");
+		comboBox.addItem("Rowing");
+		comboBox.addItem("Chasing toddlers");
+		comboBox.addItem("Speed reading");
+		comboBox.addItem("Teaching high school");
+		comboBox.addItem("None");
+		column.setCellEditor(new DefaultCellEditor(comboBox));
+		
+		
 		btnSave.addActionListener(new ActionListener() {
 			
 			@Override
@@ -105,9 +124,8 @@ public class StudentListFrame extends JFrame {
 				Student s = new Student();
 				s.setId(txtId.getText());
 				s.setName(txtName.getText());
-				s.setAddress(txtAddress.getText());				
-				Vector<Student> vS = new Vector<Student>();
-				model.addRow(vS);
+				s.setAddress(txtAddress.getText());
+				model.addRow(s);
 			}
 		});
 	}

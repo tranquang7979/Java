@@ -5,6 +5,15 @@ import java.util.LinkedList;
 import java.util.Vector;
 
 public class Student {
+	
+	public Student() {}
+	public Student(String id, String name, String address)
+	{
+		this.id = id;
+		this.name = name;
+		this.address = address;
+	}
+	
 	private String id;
 	public String getId() {
 		return id;
