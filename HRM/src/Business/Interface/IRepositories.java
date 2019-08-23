@@ -1,4 +1,4 @@
-package Business;
+package Business.Interface;
 
 import java.util.ArrayList;
 
