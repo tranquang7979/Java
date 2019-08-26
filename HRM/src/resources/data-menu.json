@@ -1,0 +1,18 @@
+{
+  "Menus": [
+    {
+      "Id": "1",
+      "Name": "Employee",
+      "Level1": [
+        {
+          "Id": "1.1",
+          "Name": "Add new"
+        },
+        {
+          "Id": "1.2",
+          "Name": "List employee"
+        }
+      ]
+    }
+  ]
+}
