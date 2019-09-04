@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Vector;
 
 import javax.swing.JTextField;
@@ -28,6 +30,7 @@ public class BookManagement extends JFrame {
 	private JTextField txtSearch;
 	private JTable tblBook;
 	private JScrollPane scrollPane;
+	static BookManagement frame;
 
 	TableForBookViewModel model;
 	Vector<BookViewModel> rows = new Vector<BookViewModel>();
@@ -39,7 +42,7 @@ public class BookManagement extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					BookManagement frame = new BookManagement();
+					frame = new BookManagement();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,7 +56,7 @@ public class BookManagement extends JFrame {
 	 */
 	public BookManagement() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 762, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -72,6 +75,27 @@ public class BookManagement extends JFrame {
 		txtSearch.setBounds(81, 60, 221, 20);
 		contentPane.add(txtSearch);
 		txtSearch.setColumns(10);
+		txtSearch.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				if(arg0.getKeyCode() == KeyEvent.VK_ENTER){
+					search();
+				}
+			}
+		});
 
 		JButton btnSearch = new JButton("Search");
 		btnSearch.setBounds(313, 59, 91, 23);
@@ -80,16 +104,12 @@ public class BookManagement extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				rows = new MyDBHelper().searchViewByName(txtSearch.getText());
-				model.refresh(rows);
-				
-				//rows.clear();
-				//tblBook.updateUI();
+				search();
 			}
 		});
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 92, 422, 170);
+		scrollPane.setBounds(10, 92, 734, 170);
 		contentPane.add(scrollPane);
 
 		rows = new MyDBHelper().selectView();
@@ -98,5 +118,13 @@ public class BookManagement extends JFrame {
 		tblBook = new JTable(model);
 		scrollPane.setViewportView(tblBook);
 
+	}
+	
+	private void search() {
+		rows = new MyDBHelper().searchViewByName(txtSearch.getText());
+		model.refresh(rows);
+		
+		//rows.clear();
+		//tblBook.updateUI();
 	}
 }
