@@ -1,122 +1,135 @@
 package Activity16;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+
 
 public class Demo1 {
-	
-	public void insert() {
-		Connection con = null;
-		Statement query = null;
+
+	public void insert(){
+		Connection con=null;
+		Statement st=null;
 		
-		try
-		{
-			/*1. load driver
-			expand 'sqljdbc4.jar and find 'SQLServerDriver'
-			then, right click and select 'Copy Qualify Name' */
+		try{
+			
+			//1. load driver
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			
 			//2. get connection
-			// jdbc:sqlserver://[SERVER NAME];databaseName=[DB NAME]
-			con = DriverManager.getConnection("jdbc:sqlserver://PC20;databaseName=Activity16", "sa", "1");
-			
+			con=DriverManager.getConnection("jdbc:sqlserver://PC20;databaseName=Activity17DB","sa","1");
 			//3. statement
-			String sqlCommand = "insert into Category values (N'Tiểu thuyết', N'no desc')";
-			query = con.createStatement();
-			int result = query.executeUpdate(sqlCommand);
-			if(result > 0)
-				System.out.println("Insert success");
-			else
-				System.out.println("Insert fail");
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-	
-
-	// prevent SQL Injection
-	public void insert(String name, String description) {
-		Connection con = null;
-		Statement query = null;
-		
-		try
-		{
-			/*1. load driver
-			expand 'sqljdbc4.jar and find 'SQLServerDriver'
-			then, right click and select 'Copy Qualify Name' */
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			
-			//2. get connection
-			// jdbc:sqlserver://[SERVER NAME];databaseName=[DB NAME]
-			con = DriverManager.getConnection("jdbc:sqlserver://PC20;databaseName=Activity16", "sa", "1");
-			
-			//3. PREPARE statement
-			String sqlCommand = "insert into Category values (?, ?)";
-			PreparedStatement prepare = con.prepareStatement(sqlCommand);
-			prepare.setString(1,  name);
-			prepare.setString(2,  description);
-			
-			int result = prepare.executeUpdate();
-			if(result > 0)
-				System.out.println("Insert success");
-			else
-				System.out.println("Insert fail");
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-
-	public void select() {
-		Connection con = null;
-		Statement query = null;
-		ResultSet result = null;
-		
-		try
-		{
-			/*1. load driver
-			expand 'sqljdbc4.jar and find 'SQLServerDriver'
-			then, right click and select 'Copy Qualify Name' */
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			
-			//2. get connection
-			// jdbc:sqlserver://[SERVER NAME];databaseName=[DB NAME]
-			con = DriverManager.getConnection("jdbc:sqlserver://PC20;databaseName=Activity16", "sa", "1");
-						
-			//3. statement
-			String sqlCommand = "select Id, CategoryName, Description from Category";
-			query = con.createStatement();
-			result = query.executeQuery(sqlCommand);
-			
-			while(result.next())
+			String sql="insert [dbo].[Category] ([Name],[description]) values (N'Văn phòng phẩm',N'no desc..')";
+			st = con.createStatement();
+			int res=st.executeUpdate(sql);
+			if(res>0)
 			{
-				/*System.out.println("Id: " + result.getInt(1) 
-								+ " - Name: " + result.getString(2) 
-								+ " - Description: " + result.getString(3));*/
-				System.out.println("Id: " + result.getInt("id") 
-								+ " - Name: " + result.getString("CategoryName") 
-								+ " - Description: " + result.getString("Description"));
+				System.out.println("insert success");
+			}else
+			{
+				System.out.println("insert fail");
 			}
-		}
-		catch(Exception e)
-		{
+			
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
+	
+	}
+	
+	public void update(){
+		Connection con=null;
+		Statement st=null;
+		
+		try{
+			
+			//1. load driver
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			//2. get connection
+			con=DriverManager.getConnection("jdbc:sqlserver://PC20;databaseName=Activity17DB","sa","1");
+			//3. statement
+			String sql="update Category set Name='English', [description] = 'no desc' where id = 1";
+			st = con.createStatement();
+			int res=st.executeUpdate(sql);
+			if(res>0)
+			{
+				System.out.println("update success");
+			}else
+			{
+				System.out.println("update fail");
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+	}
+	
+	public void delete(){
+		Connection con=null;
+		Statement st=null;
+		try{
+			
+			//1. load driver
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			//2. get connection
+			con=DriverManager.getConnection("jdbc:sqlserver://PC20;databaseName=Activity17DB","sa","1");
+			//3. statement
+			String sql="delete Category where id=1";
+			st = con.createStatement();
+			int res=st.executeUpdate(sql);
+			if(res>0)
+			{
+				System.out.println("delete success");
+			}else
+			{
+				System.out.println("delete fail");
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+	}
+	
+	
+	
+	
+	
+	public void select(){
+		Connection con=null;
+		Statement st=null;
+		ResultSet rs=null;
+		try{
+			
+			//1. load driver
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			//2. get connection
+			con=DriverManager.getConnection("jdbc:sqlserver://PC20;databaseName=Activity17DB","sa","1");
+			//3. statement
+			String sql="select * from category";
+			st=con.createStatement();
+			rs = st.executeQuery(sql);
+			
+			System.out.println("======List categories======");
+			while(rs.next()){
+				int id=  rs.getInt("id");
+				String Name = rs.getNString("Name");
+				String desc = rs.getNString("description");
+				
+				System.out.println(id + " | " + Name + " | " + desc);
+			}
+			rs.close();
+			con.close();
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	
 	}
 
 	public static void main(String[] args) {
-		
-		Demo1 d = new Demo1();
-		//d.insert();
-		d.insert("Truyện ngụ ngôn", "no desc");
+			
+		Demo1 d=new Demo1();
 		d.select();
+
 	}
 
 }

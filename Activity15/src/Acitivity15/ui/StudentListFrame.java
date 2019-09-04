@@ -53,13 +53,6 @@ public class StudentListFrame extends JFrame {
 	 */
 	public StudentListFrame() {
 		
-		// CUSTOM MODEL, DEFINE CELL
-		columnNames.add("Id");
-		columnNames.add("Name");
-		columnNames.add("Address");
-		//model = new DefaultTableModel(rows, columnNames);
-		model = new TableModelCustom(rows);		
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -97,6 +90,16 @@ public class StudentListFrame extends JFrame {
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(181, 76, 91, 23);
 		contentPane.add(btnSave);
+
+		
+		
+		
+		// CUSTOM MODEL, DEFINE CELL
+		columnNames.add("Id");
+		columnNames.add("Name");
+		columnNames.add("Address");
+		//model = new DefaultTableModel(rows, columnNames);
+		model = new TableModelCustom(rows);		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 109, 422, 154);
