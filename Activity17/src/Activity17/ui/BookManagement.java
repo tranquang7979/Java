@@ -82,6 +82,9 @@ public class BookManagement extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				rows = new MyDBHelper().searchViewByName(txtSearch.getText());
 				model.refresh(rows);
+				
+				//rows.clear();
+				//tblBook.updateUI();
 			}
 		});
 
