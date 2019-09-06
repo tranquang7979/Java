@@ -1,7 +1,10 @@
 package Business;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import com.google.gson.Gson;
 
@@ -30,14 +33,28 @@ public abstract class Repositories<T extends BaseModel, K> implements IRepositor
 	@Override
 	public T Create(T input) {
 		try {		
+			
+//			Field[] fields = _cls.getFields();
+//		    List<String> lines = new ArrayList<>(fields.length);
+//
+//		    Arrays.stream(fields).forEach(field -> {
+//		        field.setAccessible(true);
+//		        try {
+//		            lines.add(field.getName() + " = " + field.get(this));
+//		        } catch (final IllegalAccessException e) {
+//		            lines.add(field.getName() + " > " + e.getClass().getSimpleName());
+//		        }
+//		    });
+
+			
 			input.setCreateDate(new Date());
 						
 			String json = gson.toJson(input);
 			
 			//System.out.println(json);
 			
-			file.write(_cls.getName(), json, true);
-			
+			file.write(_cls.getName(), json, true);			
+
 			return input;
 		} catch (Exception ex) {			
 			ex.printStackTrace();
