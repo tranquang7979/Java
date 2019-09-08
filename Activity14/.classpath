@@ -14,5 +14,6 @@
 	<classpathentry kind="var" path="PLUGIN/org.eclipse.text_3.6.100.v20170203-0814.jar"/>
 	<classpathentry kind="var" path="PLUGIN/org.eclipse.ui.forms_3.7.101.v20170815-1446.jar"/>
 	<classpathentry kind="var" path="PLUGIN/org.eclipse.ui.workbench_3.110.1.v20170704-1208.jar"/>
+	<classpathentry kind="var" path="PLUGIN"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
