@@ -3,16 +3,23 @@ package Test;
 import com.google.gson.Gson;
 
 import Business.AccountRepository;
+import Helper.FileAccess;
 import Models.Acc;
+import Models.Config;
 import Utilities.FileHelper;
 
 public class ConsoleTest {
 
 	public static void main(String[] args) {
+
 		
-		FileHelper file = new FileHelper();
 		Gson gson = new Gson();
-		AccountRepository acc = new AccountRepository(file, gson);
+		
+		String filePath = "D:\\Test\\Eclipse\\Java\\HRM\\src\\resources\\config.json";
+		String jsonConfig = new FileAccess().read(filePath);
+		Config config = gson.fromJson(jsonConfig, Config.class);
+		
+		AccountRepository acc = new AccountRepository(gson);
 		
 		
 		Acc newAcc = new Acc();

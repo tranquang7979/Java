@@ -7,8 +7,8 @@ import Utilities.FileHelper;
 
 public class AccountRepository extends Repositories<Acc, String> {
 
-	public AccountRepository(FileHelper _file, Gson _gson) {
-		super(Acc.class, _file, _gson);
+	public AccountRepository(Gson _gson) {
+		super(Acc.class, _gson);
 		// TODO Auto-generated constructor stub
 	}
 

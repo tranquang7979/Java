@@ -1,0 +1,7 @@
+{
+	"SqlDatabase": {
+		"Connection": "jdbc:sqlserver://PC20;databaseName=Activity17DB",
+		"Username": "sa",
+		"Password": "1"
+	}
+}

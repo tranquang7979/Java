@@ -49,7 +49,7 @@ public class frm_Main extends JFrame {
 		item = new JMenuItem("Labor Contract");
 		menu.add(item);
 		item = new JMenuItem("Social Insurance");
-		menu.add(item);
+		menu.add(item);		
 		menuBar.add(menu);
 
 		menu = new JMenu("Reports");

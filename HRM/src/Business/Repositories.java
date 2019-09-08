@@ -1,6 +1,10 @@
 package Business;
 
 import java.lang.reflect.Field;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -18,44 +22,65 @@ public abstract class Repositories<T extends BaseModel, K> implements IRepositor
 	private FileHelper file = null;
 	private Gson gson = null;
 		
-	public Repositories(Class<T> cls, FileHelper _file, Gson _gson)
+	public Repositories(Class<T> cls, Gson _gson)
 	{
 		_cls = cls;
-		file = _file;
 		gson = _gson;
 	}
 	
 	protected Repositories(Class<T> cls) {
 		_cls = cls;
-		//System.out.println(_cls.getName());
 	}
 
 	@Override
 	public T Create(T input) {
 		try {		
 			
-//			Field[] fields = _cls.getFields();
-//		    List<String> lines = new ArrayList<>(fields.length);
+			Field[] fields = _cls.getFields();
+		    for (Field f : fields) {
+		        System.out.println("-> " + f.getName());
+		      }
+		    
+		    
+		    
+		    
+		    Connection con = null;
+			CallableStatement st = null;
+
+			try {
+
+				// 1. load driver
+				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+				// 2. get connection
+				con = DriverManager.getConnection("jdbc:sqlserver://PC20;databaseName=Activity17DB", "sa", "1");
+				// 3. statement
+				String sql = "{ call prc_insertCategory(?,?,?) }";
+				st = con.prepareCall(sql);
+				// pass IN parameters
+				st.setString(1, "Category 2");
+				st.setString(2, "This is category 2");
+				// register OUT parameters
+				st.registerOutParameter(3, Types.INTEGER);
+
+				st.execute();
+
+				// retrieve OUTPUT
+				int newId = st.getInt(3);
+				System.out.println("New item id: " + newId);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+//			input.setCreateDate(new Date());
+//						
+//			String json = gson.toJson(input);
+//			
+//			//System.out.println(json);
+//			
+//			file.write(_cls.getName(), json, true);			
 //
-//		    Arrays.stream(fields).forEach(field -> {
-//		        field.setAccessible(true);
-//		        try {
-//		            lines.add(field.getName() + " = " + field.get(this));
-//		        } catch (final IllegalAccessException e) {
-//		            lines.add(field.getName() + " > " + e.getClass().getSimpleName());
-//		        }
-//		    });
-
-			
-			input.setCreateDate(new Date());
-						
-			String json = gson.toJson(input);
-			
-			//System.out.println(json);
-			
-			file.write(_cls.getName(), json, true);			
-
-			return input;
+//			return input;
 		} catch (Exception ex) {			
 			ex.printStackTrace();
 		}
