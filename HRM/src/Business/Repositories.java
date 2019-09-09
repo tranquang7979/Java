@@ -13,6 +13,7 @@ import java.util.List;
 import com.google.gson.Gson;
 
 import Business.Interface.IRepositories;
+import Helper.PropertyAccess;
 import Models.BaseModel;
 import Utilities.FileHelper;
 
@@ -36,12 +37,10 @@ public abstract class Repositories<T extends BaseModel, K> implements IRepositor
 	public T Create(T input) {
 		try {		
 			
-			Field[] fields = _cls.getFields();
-		    for (Field f : fields) {
-		        System.out.println("-> " + f.getName());
-		      }
+
+			String[] names = PropertyAccess.getProperties(_cls);
 		    
-		    
+		     
 		    
 		    
 		    Connection con = null;
@@ -56,9 +55,21 @@ public abstract class Repositories<T extends BaseModel, K> implements IRepositor
 				// 3. statement
 				String sql = "{ call prc_insertCategory(?,?,?) }";
 				st = con.prepareCall(sql);
+				
+				
 				// pass IN parameters
 				st.setString(1, "Category 2");
 				st.setString(2, "This is category 2");
+				Field[] fields = _cls.getFields();
+			    for (Field f : fields) {
+			    	if(f.getType().equals(int.class))
+			    	{
+			    		//
+			    	}
+			        st.setString(f.getName(), "Category 2");
+			      }
+				
+				
 				// register OUT parameters
 				st.registerOutParameter(3, Types.INTEGER);
 
