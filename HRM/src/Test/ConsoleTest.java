@@ -1,5 +1,8 @@
 package Test;
 
+import java.util.Date;
+import java.util.UUID;
+
 import com.google.gson.Gson;
 
 import Business.AccountRepository;
@@ -23,10 +26,18 @@ public class ConsoleTest {
 		
 		
 		Acc newAcc = new Acc();
-		newAcc.setId("1");
+		newAcc.setId(UUID.randomUUID().toString());
+		newAcc.setUsername("");
+		newAcc.setPassword("");
+		newAcc.setCreatorAccId("");		
 		newAcc.setActive(true);
+		newAcc.setDel(false);
+		newAcc.setCreateDate(new Date());
+		newAcc.setActiveDate(new Date());
+		newAcc.setDelDate(new Date());
 		
-		String sqlCreate = "";
+		//String sqlCreate = "INSERT INTO [dbo].[Acc] VALUES (?,?,?,?,?,?,?,?,?)";
+		String sqlCreate = "INSERT INTO [dbo].[Acc] VALUES (p0,p1,p2,p3,p4,p5,p6,p7,p8)";
 		acc.Create(newAcc, sqlCreate);
 		
 		//a.setPassword("123456");

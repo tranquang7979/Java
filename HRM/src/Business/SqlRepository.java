@@ -5,6 +5,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Date;
 
 import Business.Interface.ISqlRepository;
@@ -16,8 +17,8 @@ public class SqlRepository {
 		
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");			
-			Connection connection = DriverManager.getConnection("jdbc:sqlserver://PC20;databaseName=Activity17DB", "sa", "1");				
-			//String sqlStatement = "{ call prc_insertCategory(?,?,?) }";
+			//Connection connection = DriverManager.getConnection("jdbc:sqlserver://PC20;databaseName=Activity17DB", "sa", "1");	
+			Connection connection = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-VPF0AQ3;databaseName=HRM", "hr", "1");
 			CallableStatement statement = connection.prepareCall(sqlStatement);
 
 			Field[] fields = cls.getClass().getFields();
@@ -32,6 +33,25 @@ public class SqlRepository {
 			return false;
 		}
 		return true;
+//		try {
+//			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");			
+//			//Connection connection = DriverManager.getConnection("jdbc:sqlserver://PC20;databaseName=Activity17DB", "sa", "1");	
+//			Connection connection = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-VPF0AQ3;databaseName=HRM", "hr", "1");
+//			Statement statement = connection.createStatement();
+//
+//			Field[] fields = cls.getClass().getFields();
+//		    for (int i = 0; i < fields.length; i++) {
+//		    	Field field = fields[i];
+//		    	sqlStatement = sqlStatement.replace("p" + i, PropertyAccess.getProperty(cls, field.getName()).toString());
+//		    }
+//			
+//		    statement.executeUpdate(sqlStatement);
+//			connection.close();		
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return false;
+//		}
+//		return true;
 	}
 	
 	private static CallableStatement SetValue(Field field, Object input, CallableStatement statement)
@@ -78,6 +98,7 @@ public class SqlRepository {
 	    		return statement;
 	    	}
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return statement;
 	}
