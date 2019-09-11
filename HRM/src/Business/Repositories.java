@@ -13,6 +13,7 @@ import java.util.List;
 import com.google.gson.Gson;
 
 import Business.Interface.IRepositories;
+import Business.Interface.ISqlRepository;
 import Helper.PropertyAccess;
 import Models.BaseModel;
 import Utilities.FileHelper;
@@ -34,104 +35,17 @@ public abstract class Repositories<T extends BaseModel, K> implements IRepositor
 	}
 
 	@Override
-	public T Create(T input) {
-		try {		
-			
-
-			String[] names = PropertyAccess.getProperties(_cls);
-		    
-		     
-		    
-		    
-		    Connection con = null;
-			CallableStatement st = null;
-
-			try {
-
-				// 1. load driver
-				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-				// 2. get connection
-				con = DriverManager.getConnection("jdbc:sqlserver://PC20;databaseName=Activity17DB", "sa", "1");
-				// 3. statement
-				String sql = "{ call prc_insertCategory(?,?,?) }";
-				st = con.prepareCall(sql);
-				
-				
-				// pass IN parameters
-				st.setString(1, "Category 2");
-				st.setString(2, "This is category 2");
-				Field[] fields = _cls.getFields();
-			    for (Field f : fields) {
-			    	if(f.getType().equals(int.class))
-			    	{
-			    		//
-			    	}
-			        st.setString(f.getName(), "Category 2");
-			      }
-				
-				
-				// register OUT parameters
-				st.registerOutParameter(3, Types.INTEGER);
-
-				st.execute();
-
-				// retrieve OUTPUT
-				int newId = st.getInt(3);
-				System.out.println("New item id: " + newId);
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-//			input.setCreateDate(new Date());
-//						
-//			String json = gson.toJson(input);
-//			
-//			//System.out.println(json);
-//			
-//			file.write(_cls.getName(), json, true);			
-//
-//			return input;
-		} catch (Exception ex) {			
-			ex.printStackTrace();
-		}
-		return null;
+	public boolean Create(T input, String sqlCommand) {
+		return SqlRepository.Execute(input, sqlCommand);
 	}
 
 	@Override
-	public T Update(T input) {
-		try {
-			if(input.getDel())
-				input.setDelDate(new Date());
-			if(input.getActive())
-				input.setActiveDate(new Date());
-			
-			ArrayList<T> arr = ReadAll();
-			boolean flag = false;
-			String json = "";
-			
-			for(int i = 0; i < arr.size(); i++)
-			{
-				item = arr.get(i);
-				if(item.getId().equals(input.getId()))
-				{
-					item = input;
-					flag = true;
-				}	
-				json += gson.toJson(item);
-			}
-
-			file.write(_cls.getName(), json, false);
-			
-			return flag ? input : null;
-		} catch (Exception ex) {			
-			ex.printStackTrace();
-		}
-		return null;
+	public boolean Update(T input, String sqlCommand) {
+		return SqlRepository.Execute(input, sqlCommand);
 	}
 
 	@Override
-	public ArrayList<T> ReadAll() {
+	public ArrayList<T> ReadAll(String sqlCommand) {
 		try {
 			ArrayList<String> arr = file.read(_cls.getName());
 			

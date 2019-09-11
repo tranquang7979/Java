@@ -26,12 +26,13 @@ public class ConsoleTest {
 		newAcc.setId("1");
 		newAcc.setActive(true);
 		
-		Acc a = acc.Create(newAcc);
+		String sqlCreate = "";
+		acc.Create(newAcc, sqlCreate);
 		
-		a.setPassword("123456");
-		acc.Update(a);
+		//a.setPassword("123456");
+		//acc.Update(a);
 		
-		System.out.println(a.getId());
+		//System.out.println(a.getId());
 	}
 
 }
