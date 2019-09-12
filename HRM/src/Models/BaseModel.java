@@ -3,7 +3,7 @@ package Models;
 import java.util.Date;
 
 public class BaseModel {
-	private String Id = "";
+	public String Id = "";
 	public Boolean Active = false;
 	public Boolean getActive() {
 		return Active;

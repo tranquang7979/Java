@@ -1,5 +1,6 @@
 package Test;
 
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.UUID;
 
@@ -27,8 +28,8 @@ public class ConsoleTest {
 		
 		Acc newAcc = new Acc();
 		newAcc.setId(UUID.randomUUID().toString());
-		newAcc.setUsername("");
-		newAcc.setPassword("");
+		newAcc.setUsername("User1");
+		newAcc.setPassword("123456");
 		newAcc.setCreatorAccId("");		
 		newAcc.setActive(true);
 		newAcc.setDel(false);
@@ -37,8 +38,13 @@ public class ConsoleTest {
 		newAcc.setDelDate(new Date());
 		
 		//String sqlCreate = "INSERT INTO [dbo].[Acc] VALUES (?,?,?,?,?,?,?,?,?)";
-		String sqlCreate = "INSERT INTO [dbo].[Acc] VALUES (p0,p1,p2,p3,p4,p5,p6,p7,p8)";
-		acc.Create(newAcc, sqlCreate);
+		//String sqlCreate = "INSERT INTO [dbo].[Acc] VALUES (p0,p1,p2,p3,p4,p5,p6,p7,p8)";
+		
+		try {
+			acc.Create(newAcc);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		//a.setPassword("123456");
 		//acc.Update(a);
