@@ -7,7 +7,7 @@ import java.nio.file.attribute.FileAttribute;
 
 public class niotest {
 	
-	public void test1() {
+	public void getFolder() {
 		String folderPath = "E:\\TranDuyQuang\\niotest\\a.txt";		
 		try {
 			
@@ -21,7 +21,7 @@ public class niotest {
 		}
 	}
 
-	public void test2() {
+	public void createFolder() {
 		String folderPath = "E:\\TranDuyQuang\\niotest\\C";		
 		try {
 			
@@ -47,13 +47,28 @@ public class niotest {
 			e.printStackTrace();
 		}
 	}
+
+	public void createFile() {
+		String folderPath = "E:\\TranDuyQuang\\niotest\\C\\c.txt";		
+		try {
+			
+			Path dir = Paths.get("E:\\TranDuyQuang\\niotest\\C");
+	        Path fileToCreatePath = dir.resolve("c.txt");
+	        System.out.println("File to create path: " + fileToCreatePath);
+	        Path newFilePath = Files.createFile(fileToCreatePath);
+	        System.out.println("New file created: " + newFilePath);
+	        System.out.println("New File exits: " + Files.exists(newFilePath));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public static void main(String[] args) {
 		
 		niotest test = new niotest();
-		test.test1();
-		test.test2();
-		
+		//test.getFolder();
+		//test.createFolder();
+		test.createFile();
 	}
 	
 }
