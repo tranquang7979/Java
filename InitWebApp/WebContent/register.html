@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link rel="stylesheet" href="./css/style.css"/>
+<link rel="stylesheet" href="./css/all.css"/>
+</head>
+
+<body>
+<div id="top">
+<img class="logo" src="../images/logo.png"/>
+<ul id=nav>
+	<li><a href="#">Home</a></li>
+    <li><a href="#">Service</a></li>
+    <li><a href="#">Work</a></li>
+    <li><a href="#">Portfolio</a></li>
+    <li><a href="#">Client</a></li>
+    <li><a href="#">Team</a></li>
+    <li><a href="#">Contact</a></li>
+</ul>
+</div>
+
+<div id="bottom">
+<h1>Register</h1>
+
+<form action="./RegisterController" method="post">
+
+
+<div>cShopperId</div>
+<div>
+	<input type="text" name="cShopperId" required="required" placeholder="Id"/>
+</div>
+<div>cPassword</div>
+<div>
+	<input type="password" name="cPassword" required="required"/>
+</div>
+<div>vFirstName</div>
+<div>
+	<input type="text" name="vFirstName" required="required"/>
+</div>
+<div>vLastName</div>
+<div>
+	<input type="text" name="vLastName" required="required"/>
+</div>
+<div>vEmailId</div>
+<div>
+	<input type="text" name="vEmailId" required="required"/>
+</div>
+<div>vAddress</div>
+<div>
+	<textarea rows="5" cols="50"  required="required"></textarea>
+</div>
+
+<div>cCity</div>
+<div>
+	<select name="cCity">
+		<option value="1">HCM</option>
+		<option value="2">HN</option>
+	</select>
+</div>
+
+<div>cState</div>
+<div>
+	<input type="text" name="cState" required="required"/>
+</div>
+<div>cCountryId</div>
+<div>
+	<select name="cCountryId">
+		<option value="001">United states of American</option>
+		<option value="002">Albania</option>
+	</select>
+</div>
+<div>cZipCode</div>
+<div>
+	<input type="text" name="cZipCode" required="required"/>
+</div>
+<div>cPhone</div>
+<div>
+	<input type="text" name="cPhone" required="required"/>
+</div>
+
+<div>cCreditCardNo</div>
+<div>
+	<input type="text" name="cCreditCardNo" required="required"/>
+</div>
+<div>vCreditCardType</div>
+<div>
+	<input type="text" name="vCreditCardType" required="required"/>
+</div>
+<div>dExpiryDate</div>
+<div>
+	<input type="date" name="dExpiryDate" required="required"/>
+</div>
+
+<div>
+	<input type="submit" name="btn_register" value="Register"/>
+</div>
+
+</form>
+</div>
+</body>
+</html>

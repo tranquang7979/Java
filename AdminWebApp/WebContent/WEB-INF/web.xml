@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>AdminWebApp</display-name>
+ 
+ <servlet>
+ 	<servlet-name>CategoryController</servlet-name>
+ 	<servlet-class>controllers.CategoryController</servlet-class>
+ </servlet>
+ <servlet-mapping>
+    <servlet-name>CategoryController</servlet-name>
+    <url-pattern>/CategoryController.do</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+ 	<servlet-name>BrandController</servlet-name>
+ 	<servlet-class>controllers.BrandController</servlet-class>
+ </servlet>
+ <servlet-mapping>
+    <servlet-name>BrandController</servlet-name>
+    <url-pattern>/BrandController.do</url-pattern>
+ </servlet-mapping>
+ 
+ 
+ 
+ 
+  <filter>
+   <filter-name>AdminFilter</filter-name>
+   <filter-class>MyFilters.AdminFilter</filter-class>
+</filter>
+ 
+ <filter-mapping>
+     <filter-name>AdminFilter</filter-name>
+     
+     <!--
+     <servlet-name>CategoryController</servlet-name>
+     <servlet-name>BrandController</servlet-name>
+     -->
+     <url-pattern>*.do</url-pattern>
+     <url-pattern>/html/addBrand.html</url-pattern>
+     <url-pattern>/html/addCategory.html</url-pattern>
+     <url-pattern>/html/index.html</url-pattern>
+ </filter-mapping>
+ 
+ 
+ 
+ <filter>
+    <filter-name>F1</filter-name>
+    <filter-class>MyFilters.Filter1</filter-class>
+ </filter>
+ 
+ <filter-mapping>
+     <filter-name>F1</filter-name>
+     <servlet-name>CategoryController</servlet-name>
+ </filter-mapping>
+ 
+ 
+
+ 
+ 
+ 
+</web-app>
