@@ -2,6 +2,7 @@
     <wb-module deploy-name="ToysWebApp">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/WebContent/JSPPage"/>
         <property name="context-root" value="ToysWebApp"/>
         <property name="java-output-path" value="/ToysWebApp/build/classes"/>
     </wb-module>
