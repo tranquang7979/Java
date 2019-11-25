@@ -7,7 +7,17 @@
    <jsp:setProperty property="*" name="contact"/>
    <%
    if(contact.getTitle() != null)
-	   contact.createContact();
+   {
+	   boolean result = contact.createContact();
+	   if(result)
+	   {
+		   out.println("Thanks for your contact!!!");
+	   }
+	   else
+	   {
+		   out.println("Please check your information!!!");
+	   }
+   }
    %>
    
        <!--contact -->

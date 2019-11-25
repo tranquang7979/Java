@@ -52,7 +52,7 @@ public class ContactBean implements Serializable {
 	String dbuser="sa";
 	String dbpassword="1";
 	String url="jdbc:sqlserver://localhost;databaseName=GlobalToyz";
-	public void createContact() {
+	public boolean createContact() {
 		
 		try {
 		//1. load driver
@@ -82,10 +82,10 @@ public class ContactBean implements Serializable {
 		con.close();
 		
 	}catch (Exception e) {
-		
-		
 		e.printStackTrace();
+		return false;
 	}
+		return true;
 	}
 
 }
