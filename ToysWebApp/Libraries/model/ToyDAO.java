@@ -29,6 +29,8 @@ public class ToyDAO extends GeneralDAO {
 				toy.setvToyImgPath(rs.getString("vToyImgPath"));
 				toys.add(toy);
 			}
+			
+			rs.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,6 +66,8 @@ public class ToyDAO extends GeneralDAO {
 				toy.setvToyImgPath(rs.getString("vToyImgPath"));
 				toys.add(toy);
 			}
+			System.out.println(toys.size());
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -35,7 +35,7 @@ public class GeneralDAO {
 			// 5. execute
 			ResultSet rs = st.executeQuery(sql);
 
-			con.close();
+			//con.close();
 
 			return rs;
 		} catch (Exception e) {
