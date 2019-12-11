@@ -38,7 +38,11 @@ public class HomeController extends HttpServlet {
 
 		SkillDAO daoSkill = new SkillDAO();		
 		List<Skill> skills = daoSkill.getAllData();
-		request.setAttribute("skills", skills);		
+		request.setAttribute("skills", skills);	
+		
+		CompanyDAO daoCompany = new CompanyDAO();
+		List<Company> companies = daoCompany.getAllData();
+		request.setAttribute("companies", companies);	
 		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("./homepage.jsp");
 		requestDispatcher.forward(request, response);

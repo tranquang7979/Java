@@ -67,7 +67,17 @@
 		</div>
 		
 		<div class="body">
+			<div class="job-list">
 			
+				<c:forEach var="item" items="${requestScope.companies}">
+					<a href="#${item.id}">
+						<div><img src="https://cdn.itviec.com/employers/home-credit-vietnam/logo/w170/dFAsZ8oiQpLPyUr8Yi5jUWdj/home-credit-vietnam-ppf-logo.png"/></div>
+						<h1>${item.name}</h1>
+						<h3>${item.name}</h3>
+					</a>
+				</c:forEach>	
+				
+			</div>
 		</div>
 		
 	</div>	

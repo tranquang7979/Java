@@ -93,6 +93,12 @@ body{
 	text-decoration: none;
 }
 
-.wrapper>.body{
-	
+.wrapper>.body>.job-list{
+	display:flex;
+	flex-direction: row;
+}
+.wrapper>.body>.job-list>div{
+	margin: 0 5px;
+	background-color: #fff;
+	text-align: center;
 }
