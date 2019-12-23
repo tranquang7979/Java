@@ -13,12 +13,15 @@ public class LoginAction extends Action {
 	@Override
 	public ActionForward execute (ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
 		//xu ly trong action/controller
-		LoginForm loginForm = (LoginForm)form;
-		String username = loginForm.getUserName();
-		String password = loginForm.getPassword();
 		
-		if(username.equals("tester") && password.equals("123")) 
-			return mapping.findForward("success"); 
+		if(form != null) {
+			LoginForm loginForm = (LoginForm)form;
+			String username = loginForm.getUserName();
+			String password = loginForm.getPassword();
+			
+			if(username != null && password != null && username.equals("tester") && password.equals("123")) 
+				return mapping.findForward("success"); 
+		}
 		
 		return mapping.findForward("error");
 		

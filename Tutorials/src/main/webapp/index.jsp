@@ -9,8 +9,15 @@
 <body>
 
 	<a href="hello.do">Hello World</a>
+	
 	<br>
+
 	<a href="./login.jsp">Login</a>
+	
+	<br>
+
+	<a href="./addCategoryForm.jsp">Add Category</a>
+	
 	
 </body>
 </html>
