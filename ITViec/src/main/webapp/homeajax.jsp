@@ -5,5 +5,5 @@
 
 <tiles:insert definition ="layout"  >
 
-	<tiles:put name="main" value="/home.do"/>
+	<tiles:put name="main" value="/homeajax.do"/>
 </tiles:insert>

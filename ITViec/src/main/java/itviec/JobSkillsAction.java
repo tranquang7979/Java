@@ -1,9 +1,12 @@
 package itviec;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,13 +15,13 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-public class HomeAction extends Action{
+public class JobSkillsAction extends Action {
 
-	
 	@Override
 	public ActionForward execute (ActionMapping maping, ActionForm form, 
 			HttpServletRequest request,HttpServletResponse response)   {
 		
+		// access mysql server 
 		String url="jdbc:mysql://localhost:3306/itviec";
 		String dbuser="root";
 		String dbpassword="";
@@ -33,35 +36,30 @@ public class HomeAction extends Action{
 			//3.  statement
 			Statement st = con.createStatement();
 			//4. sql
-		    String sql ="select * from jobs";
+		    String sql ="select * from jobskills";
 		    ResultSet rs = st.executeQuery(sql);
 		     
-		    List<JobForm> jobs = new ArrayList<JobForm>();
+		    List<String> skillnames = new ArrayList<String>();
 		    
 		    while(rs.next()) {
 		    	
 		    	int id= rs.getInt("id");
-		    	String title = rs.getString("title");
-		    	String shortdescription = rs.getString("shortdescription");
-		    	String image = rs.getString("image");
+		    	String name = rs.getString("name");
 		    	
-		    	
-		    	JobForm job =new JobForm(id, title, shortdescription, image);
-		    	
-		    	jobs.add(job);
+		    	skillnames.add(name);
 		    }
 		     
 		    rs.close();
 		    
-		    request.setAttribute("jobs", jobs);
+		    request.setAttribute("skills", skillnames);
 		     
 		}catch (Exception e) {
 			
-			e.printStackTrace();
+			
 			
 		}
 		
-		
+	
 		return maping.findForward("success");
 	}
 }

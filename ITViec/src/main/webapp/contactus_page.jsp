@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles" %>        
+<%@ taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,11 @@
 </head>
 <body>
 <tiles:insert definition="layout" page="/layout.jsp">
-	<tiles:put name="main" value="/contactus.jsp" />
+
+   
+
 </tiles:insert>
+
+
 </body>
 </html>

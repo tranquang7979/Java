@@ -1,11 +1,5 @@
 package itviec;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,20 +12,22 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 public class LocaleAction extends Action{
+
 	
 	@Override
-	public ActionForward execute (ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
-
+	public ActionForward execute (ActionMapping maping, ActionForm form, 
+			HttpServletRequest request,HttpServletResponse response)   {
 		String lang = request.getParameter("language");
-		
-		if(lang.equals("en")) 
+		System.out.println(lang);
+		if(lang.equals("en")) {
+			
 			request.getSession().setAttribute(Globals.LOCALE_KEY, Locale.ENGLISH);
-		else
-			request.getSession().setAttribute(Globals.LOCALE_KEY, new Locale("vi", "VN"));
-
+		}else {
+			request.getSession().setAttribute(Globals.LOCALE_KEY, new Locale("vi","VN"));
+			
+			
+		}
 		
-		return mapping.findForward("success");
+		return maping.findForward("success");
 	}
 }
-
-

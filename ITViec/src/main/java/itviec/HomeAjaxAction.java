@@ -12,7 +12,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-public class HomeAction extends Action{
+public class HomeAjaxAction extends Action{
 
 	
 	@Override

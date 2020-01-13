@@ -1,30 +1,31 @@
 @charset "ISO-8859-1";
 
 body{
-	margin:0;
-	padding:0;
-	height:1000px;
+	
+	margin: 0px;
+	padding: 0px;
 	width:100%;
+	height: 1000px;
 	background-color: #eee;
 }
-
 #header{
-	height:300px;
+	
+	height: 300px;
 	background-color: #000;
-	color:#fff;
+	color:#FFF;
+	
 }
 
 #main{
 	width:960px;
-	height:650px;
 	margin-left:auto;
 	margin-right:auto;
-	background-color: #fff;
+	height: 650px;
+	background-color: #FFF;
 	color:#000;
 }
-
 #footer{
-	height:150px;
+	height: 150px;
 	background-color: #000;
-	color:#fff;
+	color:#FFF;
 }

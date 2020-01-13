@@ -4,30 +4,47 @@
 "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
  
 <struts-config>
- 	<!-- Khai bao tat ca cac actionform hay con goi la model -->
-    <form-beans>
-    	
-    	
-    </form-beans>
  
- 	<action-mappings>
- 		<action path="/jobskillindex"  type="itviec.JobSkillAction">
- 			<forward name="success" path="/jobskillindex.jsp"></forward>
- 		</action>
- 		
- 		<action path="/home"  type="itviec.HomeAction">
- 			<forward name="success" path="/home-body.jsp"></forward>
- 		</action>
- 		
- 		<action path="/locale"  type="itviec.LocaleAction">
- 			<forward name="success" path="/home.jsp"></forward>
- 		</action>
- 		
- 	</action-mappings>
- 	
+    <form-beans>
+        
+        
+    </form-beans>
+    
+    
+ 
+    <action-mappings>
+        
+        <action path="/home" type="itviec.HomeAction">
+            <forward name="success" path="/home-body.jsp"></forward>
+        </action>
+        
+         <action path="/homeajax" type="itviec.HomeAjaxAction">
+            <forward name="success" path="/home-body-ajax.jsp"></forward>
+        </action>
+        
+         <action path="/homeajaxmysql" type="itviec.HomeAjaxMySQLAction">
+        </action>
+        
+         <action path="/get-job-skills" type="itviec.JobSkillAjaxAction">
+        </action>
+        
+        <action path="/locale" type="itviec.LocaleAction">
+            <forward name="success" path="/home.jsp"></forward>
+        </action>
+        
+        
+        <action path="/jobskillindex" type="itviec.JobSkillsAction">
+        
+        	<forward name="success" path="/jobskillindex.jsp"></forward>
+        </action>
+       
+        
+    </action-mappings>
+ 
+ 
  	<message-resources parameter="itviec.resource"></message-resources>
- 	
- 	<plug-in className="org.apache.struts.tiles.TilesPlugin">
- 		<set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml"/>
- 	</plug-in>
+ 
+ <plug-in className="org.apache.struts.tiles.TilesPlugin">
+     <set-property property="definitions-config"  value="/WEB-INF/tiles-defs.xml"/> 
+ </plug-in>
 </struts-config>
